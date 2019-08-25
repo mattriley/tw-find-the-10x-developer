@@ -1,6 +1,18 @@
 # August Challenge: Find the 10x Developer
 
-## Background
+## Notes
+
+### Permute function
+
+The permute function at `./src/permute.js` taken from: https://stackoverflow.com/a/53159592
+
+With so many variations of this function already available, I didn't want to spend time writing my own.
+
+For large data sets, I'd change the permute function to accept a callback, or change it to a generator function to limit the number of permutations stored in memory at a given time.
+
+## Problem Statement
+
+### Background
 
 Jessie, Evan, John, Sarah and Matt are all engineers in the same delivery team (note: any resemblance to actual TWers, living or dead, is purely coincidental)... and each of them has a different level of coding skill to the other. This means it possible to order them from best to... "least best". Importantly, the best of them is the mythical 10x Developer!!!
 
@@ -8,21 +20,21 @@ But which one is it?!?
 
 Here's what we know:
 
-- Jessie is not the best developer
-- Evan is not the worst developer
-- John is not the best developer or the worst developer
-- Sarah is a better developer than Evan
-- Matt is not directly below or above John as a developer
-- John is not directly below or above Evan as a developer
+-   Jessie is not the best developer
+-   Evan is not the worst developer
+-   John is not the best developer or the worst developer
+-   Sarah is a better developer than Evan
+-   Matt is not directly below or above John as a developer
+-   John is not directly below or above Evan as a developer
 
-## Challenge
+### Challenge
 
 You need to write a solution to compute these answers:
 
 1. Who is the 10x developer on the team?
 2. What is the correct ordering of the members of the team according to their coding skills?
 
-## Submission
+### Submission
 
 What to submit?
 
@@ -32,7 +44,7 @@ When to submit?
 
 By 23:59:59 on Wednesday August 28th AEST (that's 2 weeks away, peoples)
 
-## Criteria for Awesomeness
+### Criteria for Awesomeness
 
 1. Solving the problem as outlined in "Challenge"
 2. Clean Code. Note: the right choice of language and/or library could make your solution much more elegant.
@@ -44,6 +56,6 @@ Did I mention?
 
 The winner of this challenge will receive an extra training day in 2019!
 
-## Challenge Author and Head of Judging Panel
+### Challenge Author and Head of Judging Panel
 
 Andy Marks
