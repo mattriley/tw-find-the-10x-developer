@@ -1,16 +1,8 @@
 const test = require('tape');
-const filterPermutations = require('../src/filter-permutations');
-const parseStatements = require('../src/parse-statements');
+const findThe10xDeveloper = require('../src/find-the-10x-developer');
 const { notBest, notWorst, betterThan, notDirectlyAbove, notDirectlyBelow } = require('../src/predicates');
 
-const assert = (names, facts, t) => {
-    const permutations = filterPermutations(names, facts);
-    const expected = [['Sarah', 'John', 'Jessie', 'Evan', 'Matt']];
-    t.same(permutations, expected, 'found the 10x developer!');
-    t.end();
-};
-
-test('finds the 10x developer using api', t => {
+test('finds the 10x developer with predicates', t => {
     const names = ['Jessie', 'Evan', 'John', 'Sarah', 'Matt'];
     const facts = [
         notBest('Jessie'),
@@ -23,10 +15,13 @@ test('finds the 10x developer using api', t => {
         notDirectlyBelow('John', 'Evan'),
         notDirectlyAbove('John', 'Evan')
     ];
-    assert(names, facts, t);
+    const { found, the10xDeveloper, rankedDevelopers } = findThe10xDeveloper.withPredicates(names, facts);
+    t.true(found, 'a result was found');
+    t.equal(the10xDeveloper, rankedDevelopers[0], '10x developer was identified');
+    t.end();
 });
 
-test('finds the 10x developer using statements', t => {
+test('finds the 10x developer with statements', t => {
     const statements = [
         'Jessie is not the best developer',
         'Evan is not the worst developer',
@@ -35,6 +30,8 @@ test('finds the 10x developer using statements', t => {
         'Matt is not directly below or above John as a developer',
         'John is not directly below or above Evan as a developer'
     ];
-    const [names, facts] = parseStatements(statements);
-    assert(names, facts, t);
+    const { found, the10xDeveloper, rankedDevelopers } = findThe10xDeveloper.withStatements(statements);
+    t.true(found, 'a result was found');
+    t.equal(the10xDeveloper, rankedDevelopers[0], '10x developer was identified');
+    t.end();
 });
