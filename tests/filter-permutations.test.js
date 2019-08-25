@@ -9,3 +9,12 @@ test('finds the reverse permutation', t => {
     t.same(permutations, expected, 'reverse permutation was found');
     t.end();
 });
+
+test('finds all permutations', t => {
+    const arr = ['foo', 'bar'];
+    const predicates = [() => true, () => true];
+    const permutations = filterPermutations(arr, predicates);
+    const expected = [['foo', 'bar'], ['bar', 'foo']];
+    t.same(permutations, expected, 'all permutations were found');
+    t.end();
+});
