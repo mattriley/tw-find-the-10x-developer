@@ -18,3 +18,12 @@ test('finds all permutations', t => {
     t.same(permutations, expected, 'all permutations were found');
     t.end();
 });
+
+test('finds no permutations', t => {
+    const arr = ['foo', 'bar'];
+    const predicates = [() => false, () => false];
+    const permutations = filterPermutations(arr, predicates);
+    const expected = [];
+    t.same(permutations, expected, 'no permutations found');
+    t.end();
+});
