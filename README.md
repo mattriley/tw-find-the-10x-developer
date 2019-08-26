@@ -2,10 +2,11 @@
 
 ThoughtWorks Australia Shokunin 2019 August Challenge.
 
-## Running
+## Usage
 
 -   Install Node.js 12.9.0 or install [NVM](https://github.com/nvm-sh/nvm) and run `nvm install`.
--   Run `./go`.
+-   Find the 10x developer: `./go`.
+-   Run tests: `npm t`
 
 ## Problem Statement
 
