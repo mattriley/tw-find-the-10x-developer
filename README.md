@@ -2,10 +2,14 @@
 
 ThoughtWorks Australia Shokunin 2019 August Challenge.
 
-## Solutions
+## Usage
 
--   Complete Edition. See: `./complete`
--   Compact Edition. See: `./compact`
+Two solutions have been provided: the "Complete Edition", and the "Compact Edition".
+
+For either solution:
+
+-   Install Node.js 12.9.0 or install [NVM](https://github.com/nvm-sh/nvm) and run `nvm install`
+-   Run `./go`
 
 ## Problem Statement
 
