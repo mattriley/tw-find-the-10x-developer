@@ -9,15 +9,8 @@ module.exports = statements => {
 };
 
 const parseStatement = statement => {
-    const { getNames, getPredicates } = findStatement(statement);
-    const names = getNames();
-    const predicates = getPredicates(names);
+    const [pattern, ...predicateFuncs] = statementPredicates.find(([pattern]) => pattern.test(statement));
+    const names = Array.from(statement.match(pattern)).slice(1);
+    const predicates = predicateFuncs.map(predicate => predicate(...names));
     return { names, predicates };
-};
-
-const findStatement = statement => {
-    const [pattern, ...predicates] = statementPredicates.find(([pattern]) => pattern.test(statement));
-    const getNames = () => Array.from(statement.match(pattern)).slice(1);
-    const getPredicates = names => predicates.map(predicate => predicate(...names));
-    return { getNames, getPredicates };
 };
