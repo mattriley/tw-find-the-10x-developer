@@ -1,0 +1,11 @@
+{
+    "name": "find-the-10x-developer-complete",
+    "scripts": {
+        "test": "tape tests/**/*.test.js | tap-spec"
+    },
+    "author": "Matt Riley",
+    "devDependencies": {
+        "tap-spec": "^5.0.0",
+        "tape": "^4.11.0"
+    }
+}
