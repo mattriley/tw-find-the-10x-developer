@@ -10,7 +10,7 @@ const notAdjacentTo = (a, b) => arr => (i => [i - 1, i + 1].every(i => arr[i] !=
 
 const developers = ['Jessie', 'Evan', 'John', 'Sarah', 'Matt'];
 
-const facts = [
+const predicates = [
     notBest('Jessie'),
     notWorst('Evan'),
     notBest('John'),
@@ -20,4 +20,4 @@ const facts = [
     notAdjacentTo('John', 'Evan')
 ];
 
-console.log(findPermutation(developers, facts));
+console.log(findPermutation(developers, predicates));
