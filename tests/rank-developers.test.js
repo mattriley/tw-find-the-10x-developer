@@ -1,6 +1,6 @@
 const test = require('tape');
 const rankDevelopers = require('../src/rank-developers');
-const { notBest, notWorst, betterThan, notDirectlyAbove, notDirectlyBelow } = require('../src/predicates');
+const { notBest, notWorst, betterThan, notAdjacent } = require('../src/predicates');
 
 const expectedRanking = ['Sarah', 'John', 'Jessie', 'Evan', 'Matt'];
 
@@ -12,10 +12,8 @@ test('ranks developer with predicates', t => {
         notBest('John'),
         notWorst('John'),
         betterThan('Sarah', 'Evan'),
-        notDirectlyBelow('Matt', 'John'),
-        notDirectlyAbove('Matt', 'John'),
-        notDirectlyBelow('John', 'Evan'),
-        notDirectlyAbove('John', 'Evan')
+        notAdjacent('Matt', 'John'),
+        notAdjacent('John', 'Evan')
     ];
     const rankedDevelopers = rankDevelopers.withPredicates(developers, facts);
     t.same(rankedDevelopers, expectedRanking, 'Developers correctly ranked');
