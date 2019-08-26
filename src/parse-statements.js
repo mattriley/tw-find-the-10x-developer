@@ -10,7 +10,7 @@ module.exports = statements => {
 
 const parseStatement = statement => {
     const [pattern, ...predicateFuncs] = statementPredicates.find(([pattern]) => pattern.test(statement));
-    const names = Array.from(statement.match(pattern)).slice(1);
+    const names = statement.match(pattern).slice(1);
     const predicates = predicateFuncs.map(predicate => predicate(...names));
     return { names, predicates };
 };
