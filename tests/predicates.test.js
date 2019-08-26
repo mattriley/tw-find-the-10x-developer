@@ -1,6 +1,6 @@
 const test = require('tape');
 const predicates = require('../src/predicates');
-const { notBest, notWorst, betterThan, notAdjacent } = predicates;
+const { notBest, notWorst, notWorseThan, notAdjacentTo } = predicates;
 
 test('not the best', t => {
     const arr = ['foo', 'bar'];
@@ -18,22 +18,22 @@ test('not the worst', t => {
 
 test('better than', t => {
     const arr = ['foo', 'bar', 'baz'];
-    t.true(betterThan('foo', 'bar')(arr), 'foo is better than bar');
-    t.true(betterThan('foo', 'baz')(arr), 'foo is better than baz');
-    t.false(betterThan('bar', 'foo')(arr), 'bar is worse than foo');
+    t.true(notWorseThan('foo', 'bar')(arr), 'foo is better than bar');
+    t.true(notWorseThan('foo', 'baz')(arr), 'foo is better than baz');
+    t.false(notWorseThan('bar', 'foo')(arr), 'bar is worse than foo');
     t.end();
 });
 
 test('not directly above', t => {
     const arr = ['foo', 'bar', 'baz'];
-    t.true(notAdjacent('foo', 'baz')(arr), 'foo is not directly above baz');
-    t.false(notAdjacent('foo', 'bar')(arr), 'foo is directly above bar');
+    t.true(notAdjacentTo('foo', 'baz')(arr), 'foo is not directly above baz');
+    t.false(notAdjacentTo('foo', 'bar')(arr), 'foo is directly above bar');
     t.end();
 });
 
 test('not directly below', t => {
     const arr = ['foo', 'bar', 'baz'];
-    t.true(notAdjacent('baz', 'foo')(arr), 'baz is not directly below foo');
-    t.false(notAdjacent('bar', 'foo')(arr), 'bar is directly below foo');
+    t.true(notAdjacentTo('baz', 'foo')(arr), 'baz is not directly below foo');
+    t.false(notAdjacentTo('bar', 'foo')(arr), 'bar is directly below foo');
     t.end();
 });
