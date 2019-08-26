@@ -1,9 +1,9 @@
 const test = require('tape');
-const permute = require('../src/permute');
+const everyPermutation = require('../src/every-permutation');
 
-test('generates all possible permutations', t => {
+test('generates every permutation', t => {
     const arr = ['foo', 'bar', 'baz'];
-    const permutations = permute(arr);
+    const permutations = everyPermutation(arr);
     const expected = [
         ['foo', 'bar', 'baz'],
         ['foo', 'baz', 'bar'],
@@ -12,6 +12,6 @@ test('generates all possible permutations', t => {
         ['baz', 'foo', 'bar'],
         ['baz', 'bar', 'foo']
     ];
-    t.same(permutations, expected, 'generated expected permutations');
+    t.same(permutations, expected, 'every permutation generated');
     t.end();
 });

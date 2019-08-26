@@ -1,4 +1,4 @@
-const permute = require('./permute');
+const everyPermutation = require('./every-permutation');
 
 module.exports = (arr, predicates) =>
-    permute(arr).filter(permutation => predicates.every(predicate => predicate(permutation)));
+    everyPermutation(arr).filter(permutation => predicates.every(predicate => predicate(permutation)));
