@@ -1,6 +1,5 @@
 const test = require('tape');
-const predicates = require('../src/predicates');
-const { notBest, notWorst, notWorseThan, notAdjacentTo } = predicates;
+const { notBest, notWorst, notWorseThan, notAdjacentTo } = require('../src/predicates');
 
 test('not the best', t => {
     const arr = ['foo', 'bar'];
