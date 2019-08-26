@@ -1,9 +1,11 @@
 const test = require('tape');
-const findThe10xDeveloper = require('../src/find-the-10x-developer');
+const rankDevelopers = require('../src/rank-developers');
 const { notBest, notWorst, betterThan, notDirectlyAbove, notDirectlyBelow } = require('../src/predicates');
 
-test('finds the 10x developer with predicates', t => {
-    const names = ['Jessie', 'Evan', 'John', 'Sarah', 'Matt'];
+const expectedRanking = ['Sarah', 'John', 'Jessie', 'Evan', 'Matt'];
+
+test('ranks developer with predicates', t => {
+    const developers = ['Jessie', 'Evan', 'John', 'Sarah', 'Matt'];
     const facts = [
         notBest('Jessie'),
         notWorst('Evan'),
@@ -15,13 +17,12 @@ test('finds the 10x developer with predicates', t => {
         notDirectlyBelow('John', 'Evan'),
         notDirectlyAbove('John', 'Evan')
     ];
-    const { found, the10xDeveloper, rankedDevelopers } = findThe10xDeveloper.withPredicates(names, facts);
-    t.true(found, 'a result was found');
-    t.equal(the10xDeveloper, rankedDevelopers[0], '10x developer was identified');
+    const rankedDevelopers = rankDevelopers.withPredicates(developers, facts);
+    t.same(rankedDevelopers, expectedRanking, 'Developers correctly ranked');
     t.end();
 });
 
-test('finds the 10x developer with statements', t => {
+test('ranks developers with statements', t => {
     const statements = [
         'Jessie is not the best developer',
         'Evan is not the worst developer',
@@ -30,8 +31,13 @@ test('finds the 10x developer with statements', t => {
         'Matt is not directly below or above John as a developer',
         'John is not directly below or above Evan as a developer'
     ];
-    const { found, the10xDeveloper, rankedDevelopers } = findThe10xDeveloper.withStatements(statements);
-    t.true(found, 'a result was found');
-    t.equal(the10xDeveloper, rankedDevelopers[0], '10x developer was identified');
+    const rankedDevelopers = rankDevelopers.withStatements(statements);
+    t.same(rankedDevelopers, expectedRanking, 'Developers correctly ranked');
+    t.end();
+});
+
+test('ranks developers with file', t => {
+    const rankedDevelopers = rankDevelopers.withFile('factfile');
+    t.same(rankedDevelopers, expectedRanking, 'Developers correctly ranked');
     t.end();
 });
