@@ -1,14 +1,11 @@
-# August Challenge: Find the 10x Developer
+# Find the 10x Developer
 
-## Notes
+ThoughtWorks Australia Shokunin 2019 August Challenge.
 
-### Permute function
+## Running
 
-The permute function at `./src/permute.js` taken from: https://stackoverflow.com/a/53159592
-
-With so many variations of this function already available, I didn't want to spend time writing my own.
-
-For large data sets, I'd change the permute function to accept a callback, or change it to a generator function to limit the number of permutations stored in memory at a given time.
+-   Install Node.js 12.9.0 or install [NVM](https://github.com/nvm-sh/nvm) and run `nvm install`.
+-   Run `./go`.
 
 ## Problem Statement
 
